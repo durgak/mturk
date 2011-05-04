@@ -1,0 +1,54 @@
+<html>
+
+<head>
+  <style>
+div { height: 100px; width: 300px; margin: 10px; 
+      background-color: #ffd; overflow: auto; }
+</style>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+
+<body>
+  
+<div id= "start-button-div">
+	<input type="button" id="startButton" name="startButton" value="start" />
+	</div>
+
+<div id="image-div" style="display:none">
+	<img src="http://www.cuttingedgedjs.com/blog/wp-content/uploads/2011/03/happy-face_happyface_smiley_2400x2400.jpg" alt="face" height =100 width=100/>
+</div>
+
+<div id="stop-button-div">
+	<input type="button" id="stopButton" name="stopButton" value="stop" />
+</div>
+
+<div id="time-taken-div">
+	<input name="time_Elapsed" id="time_Elapsed" value="0" />
+	</div>
+<script>
+//Records time elapsed in milliseconds.
+var startTime,stopTime, timeElapsed;
+
+$('#start-button-div').click(function(event) {
+	if (startTime){
+		startTime = startTime
+	}
+	else{
+		startTime = event.timeStamp;
+	}	
+	$('#image-div').show('slow');
+});
+
+$('#stop-button-div').click(function(event) {
+	stopTime = event.timeStamp;
+	timeElapsed = stopTime-startTime;
+	$('#time_Elapsed').val(timeElapsed);
+	
+	$('#image-div').fadeOut('slow');
+});
+ 
+</script>
+
+</body>
+
+</html>
